@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="pageholder">
+    <div class="titleholder">
+        <center><div class="title">Google Maps Api Data</div></center>
+    </div>
+
+
+
+<div class="linkholder">
+    {% if mydata.count == 0 %}
+        <center><div>No data Availlable</div></center>
+    {% else %}
+    <table id="ourtables3" class="myTable m-3"  class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Zipcode</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Geocode link</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for a in mydata %}
+            <tr>
+                <td>{{a.id}}</td>
+                <td>{{a.name}}</td>
+                <td>{{a.address}}</td>
+                <td>{{a.zipcode}}</td>
+                <td>{{a.city}}</td>
+                <td>{{a.country}}</td>
+                <td><a href="{% url 'geocoding' a.id %}">Geocode!</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+<div class="linkholder">
+    <a href="{% url 'distance' %}">Calculate Distance</a>
+</div>
+
+<div class="linkholder">
+    <a href="{% url 'map' %}">Go to Map</a>
+</div>
+</div>
+{% endblock content %}

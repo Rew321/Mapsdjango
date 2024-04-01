@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="pageholder">
+    <div class="titleholder">
+        <center><div class="title">Google Maps Api Distance</div></center>
+    </div>
+
+
+
+<div class="linkholder">
+    {% if distance.count == 0 %}
+        <center><div>No data Availlable</div></center>
+    {% else %}
+    <table id="ourtables3" class="myTable m-3"  class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>From location</th>
+                <th>To location</th>
+                <th>Mode</th>
+                <th>Distance in Km</th>
+                <th>Duration in mins</th>
+                <th>Duration traffic in mins</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for a in distance %}
+            <tr>
+                <td>{{a.id}}</td>
+                <td>{{a.from_location}}</td>
+                <td>{{a.to_location}}</td>
+                <td>{{a.mode}}</td>
+                <td>{{a.distance_km}}</td>
+                <td>{{a.duration_mins}}</td>
+                <td>{{a.duration_traffic_mins}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="linkholder">
+        <div class="form1 ml-3"> {{form.from_location}}</div>
+        <div class="form1 ml-3"> {{form.to_location}}</div>
+        <div class="form1 ml-3"> {{form.mode}}</div>
+
+        <button class="ourbutton" type="submit"> Submit</button>
+    </div>
+</form>
+</div>
+{% endblock content %}

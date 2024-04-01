@@ -1,0 +1,30 @@
+.mapholder{
+    height: 500px;
+    width: 100%;
+}
+
+#map{
+    height: 100%;
+}
+
+#ourtable_wrapper{
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mytTable{
+    font-size: 12px;
+    min-height: 400px;
+    overflow: hidden;
+    border-radius: 7px 7px 0 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+}
+
+.mytTable th{
+    background-color: #20323E;
+    color: white;
+    font-weight: bold;
+}
